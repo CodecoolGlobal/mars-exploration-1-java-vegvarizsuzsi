@@ -28,7 +28,7 @@ public class PatchGenerator {
         putElementOnMap(firstPosition);
         potentialNextPositions(firstPosition);
         for (int i = 1; i < numberOfTerrainElements; i++) {
-            Coordinate actualPositionToAdd = randomCoordinate(potentialPositions);
+            Coordinate actualPositionToAdd = randomCoordinateFromList(potentialPositions);
             putElementOnMap(actualPositionToAdd);
             potentialPositions.remove(actualPositionToAdd);
             potentialNextPositions(actualPositionToAdd);
@@ -46,12 +46,6 @@ public class PatchGenerator {
             }
         }
         throw new IllegalStateException("Unable to find an empty coordinate.");
-    }
-
-    private Coordinate generateRandomCoordinate(int mapWidth, int mapHeight) {
-        int randomX = random.nextInt(mapWidth);
-        int randomY = random.nextInt(mapHeight);
-        return new Coordinate(randomX, randomY);
     }
 
     public void putElementOnMap(Coordinate coordinate) {
@@ -73,7 +67,13 @@ public class PatchGenerator {
         }
     }
 
-    public Coordinate randomCoordinate(List<Coordinate> potentialNextPositions) {
+    private Coordinate generateRandomCoordinate(int mapWidth, int mapHeight) {
+        int randomX = random.nextInt(mapWidth);
+        int randomY = random.nextInt(mapHeight);
+        return new Coordinate(randomX, randomY);
+    }
+
+    public Coordinate randomCoordinateFromList(List<Coordinate> potentialNextPositions) {
         int randomIndex = random.nextInt(potentialNextPositions.size());
         return potentialNextPositions.get(randomIndex);
     }
