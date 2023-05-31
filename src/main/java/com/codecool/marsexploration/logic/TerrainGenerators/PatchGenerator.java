@@ -1,4 +1,4 @@
-package com.codecool.marsexploration.logic;
+package com.codecool.marsexploration.logic.TerrainGenerators;
 
 import com.codecool.marsexploration.data.Coordinate;
 import com.codecool.marsexploration.data.MarsMap;
@@ -41,7 +41,7 @@ public class PatchGenerator {
         int maxAttempts = mapWidth * mapHeight;
         for (int i = 0; i < maxAttempts; i++) {
             Coordinate coordinate = generateRandomCoordinate(mapWidth, mapHeight);
-            if (isCoordinateEmpty(coordinate)) {
+            if (marsMap.isCoordinateEmpty(coordinate)) {
                 return coordinate;
             }
         }
@@ -66,28 +66,11 @@ public class PatchGenerator {
             int newX = previousX + dx;
             for (int dy = -1; dy <= 1; dy++) {
                 int newY = previousY + dy;
-                if (isWithInBound(newX, newY) &&
-                        checkNeighbourIsEmpty(newX, newY)) {
+                if (marsMap.isWithInBound(newX, newY) && marsMap.isCoordinateEmpty(new Coordinate(newX, newY))) {
                     potentialPositions.add(new Coordinate(newX, newY));
                 }
             }
         }
-    }
-
-    private boolean checkNeighbourIsEmpty(int x, int y) {
-        return marsMap.getTerrainElements()[x][y].getType() == TerrainElementType.EMPTY;
-
-    }
-
-    private boolean checkNeighbourType(int x, int y, int dx, int dy) {
-        return marsMap.getTerrainElements()[x + dx][y + dy].getType() == terrainElementType;
-
-    }
-
-
-    private boolean isWithInBound(int x, int y) {
-        return x >= 0 && y >= 0 && x < marsMap.getWidth() && y < marsMap.getHeight();
-
     }
 
     public Coordinate randomCoordinate(List<Coordinate> potentialNextPositions) {
@@ -95,8 +78,5 @@ public class PatchGenerator {
         return potentialNextPositions.get(randomIndex);
     }
 
-    private boolean isCoordinateEmpty(Coordinate coordinate) {
-        return marsMap.getTerrainElements()[coordinate.x()][coordinate.y()].getType() == TerrainElementType.EMPTY;
-    }
 
 }
