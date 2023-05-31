@@ -15,4 +15,11 @@ public class TerrainElement {
     public void setType(TerrainElementType type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "TerrainElement{" +
+                "type=" + type +
+                '}';
+    }
 }
