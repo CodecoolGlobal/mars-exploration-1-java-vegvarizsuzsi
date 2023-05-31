@@ -61,9 +61,8 @@ public class PatchGenerator {
     public void potentialNextPositions(Coordinate previousCoordinate) {
         for (int dx = -1; dx <= 1; dx++) {
             for (int dy = -1; dy <= 1; dy++) {
-                if (checkNeighbourIsEmpty(previousCoordinate.x(), previousCoordinate.y(), dx, dy) &&
-                        checkNeighbourType(previousCoordinate.x(), previousCoordinate.y(), dx, dy) &&
-                        isWithInBound(previousCoordinate.x(), previousCoordinate.y(), dx, dy)) {
+                if (isWithInBound(previousCoordinate.x(), previousCoordinate.y(), dx, dy) &&
+                        checkNeighbourIsEmpty(previousCoordinate.x(), previousCoordinate.y(), dx, dy)) {
                     potentialPositions.add(new Coordinate(previousCoordinate.x() + dx, previousCoordinate.y() + dy));
                 }
             }
