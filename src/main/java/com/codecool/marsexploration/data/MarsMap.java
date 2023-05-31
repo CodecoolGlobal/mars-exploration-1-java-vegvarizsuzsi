@@ -9,6 +9,18 @@ public class MarsMap {
     private int height;
     private TerrainElement[][] terrainElements;
 
+    public TerrainElement[][] getTerrainElements() {
+        return terrainElements;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     public MarsMap(String fileName, int width, int height) {
         this.fileName = fileName;
         this.width = width;
