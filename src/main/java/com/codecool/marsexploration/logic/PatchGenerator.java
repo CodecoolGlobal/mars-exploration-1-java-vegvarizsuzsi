@@ -26,17 +26,26 @@ public class PatchGenerator {
     public void generatePatch() {
         Coordinate firstPosition = pickFirstPosition();
         putElementOnMap(firstPosition);
-        potentialPositions.addAll(potentialNextPositions(firstPosition));
+        potentialNextPositions(firstPosition);
         for (int i = 1; i < numberOfTerrainElements; i++) {
             Coordinate actualPositionToAdd = randomCoordinate(potentialPositions);
             putElementOnMap(actualPositionToAdd);
             potentialPositions.remove(actualPositionToAdd);
-            potentialPositions.addAll(potentialNextPositions(actualPositionToAdd));
+            potentialNextPositions(actualPositionToAdd);
         }
     }
 
     public Coordinate pickFirstPosition() {
-        return generateRandomCoordinate(marsMap.getWidth(), marsMap.getHeight());
+        int mapWidth = marsMap.getWidth();
+        int mapHeight = marsMap.getHeight();
+        int maxAttempts = mapWidth * mapHeight;
+        for (int i = 0; i < maxAttempts; i++) {
+            Coordinate coordinate = generateRandomCoordinate(mapWidth, mapHeight);
+            if (isCoordinateEmpty(coordinate)) {
+                return coordinate;
+            }
+        }
+        throw new IllegalStateException("Unable to find an empty coordinate.");
     }
 
     private Coordinate generateRandomCoordinate(int mapWidth, int mapHeight) {
@@ -49,7 +58,7 @@ public class PatchGenerator {
         marsMap.putElementOnMap(coordinate, terrainElementType);
     }
 
-    public List<Coordinate> potentialNextPositions(Coordinate previousCoordinate) {
+    public void potentialNextPositions(Coordinate previousCoordinate) {
         for (int dx = -1; dx <= 1; dx++) {
             for (int dy = -1; dy <= 1; dy++) {
                 if (checkNeighbourIsEmpty(previousCoordinate.x(), previousCoordinate.y(), dx, dy) &&
@@ -59,7 +68,6 @@ public class PatchGenerator {
                 }
             }
         }
-        return potentialPositions;
     }
 
     private boolean checkNeighbourIsEmpty(int x, int y, int dx, int dy) {
@@ -83,5 +91,8 @@ public class PatchGenerator {
         return potentialNextPositions.get(randomIndex);
     }
 
+    private boolean isCoordinateEmpty(Coordinate coordinate) {
+        return marsMap.getTerrainElements()[coordinate.x()][coordinate.y()].getType() == TerrainElementType.EMPTY;
+    }
 
 }
