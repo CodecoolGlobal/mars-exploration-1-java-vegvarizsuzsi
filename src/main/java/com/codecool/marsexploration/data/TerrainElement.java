@@ -12,4 +12,7 @@ public class TerrainElement {
         return type;
     }
 
+    public void setType(TerrainElementType type) {
+        this.type = type;
+    }
 }
