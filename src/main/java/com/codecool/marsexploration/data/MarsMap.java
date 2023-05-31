@@ -1,8 +1,6 @@
 package com.codecool.marsexploration.data;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class MarsMap {
     private String fileName;
@@ -41,6 +39,14 @@ public class MarsMap {
 
     public void putElementOnMap(Coordinate coordinate, TerrainElementType terrainElementType){
         terrainElements[coordinate.x()][coordinate.y()].setType(terrainElementType);
+    }
+
+    public boolean isCoordinateEmpty(Coordinate coordinate) {
+        return terrainElements[coordinate.x()][coordinate.y()].getType() == TerrainElementType.EMPTY;
+    }
+
+    public boolean isWithInBound(int x, int y) {
+        return x >= 0 && y >= 0 && x < width && y < height;
     }
 
     @Override
