@@ -42,4 +42,6 @@ public class MarsMap {
         terrainElements[coordinate.x()][coordinate.y()].setType(terrainElementType);
     }
 
+
+
 }
