@@ -25,4 +25,9 @@ public class MarsMap {
             }
         }
     }
+
+    public void putElementOnMap(Coordinate coordinate, TerrainElementType terrainElementType){
+        terrainElements[coordinate.x()][coordinate.y()].setType(terrainElementType);
+    }
+
 }
