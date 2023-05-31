@@ -59,18 +59,23 @@ public class PatchGenerator {
     }
 
     public void potentialNextPositions(Coordinate previousCoordinate) {
+        int previousX = previousCoordinate.x();
+        int previousY = previousCoordinate.y();
+
         for (int dx = -1; dx <= 1; dx++) {
+            int newX = previousX + dx;
             for (int dy = -1; dy <= 1; dy++) {
-                if (isWithInBound(previousCoordinate.x(), previousCoordinate.y(), dx, dy) &&
-                        checkNeighbourIsEmpty(previousCoordinate.x(), previousCoordinate.y(), dx, dy)) {
-                    potentialPositions.add(new Coordinate(previousCoordinate.x() + dx, previousCoordinate.y() + dy));
+                int newY = previousY + dy;
+                if (isWithInBound(newX, newY) &&
+                        checkNeighbourIsEmpty(newX, newY)) {
+                    potentialPositions.add(new Coordinate(newX, newY));
                 }
             }
         }
     }
 
-    private boolean checkNeighbourIsEmpty(int x, int y, int dx, int dy) {
-        return marsMap.getTerrainElements()[x + dx][y + dy].getType() == TerrainElementType.EMPTY;
+    private boolean checkNeighbourIsEmpty(int x, int y) {
+        return marsMap.getTerrainElements()[x][y].getType() == TerrainElementType.EMPTY;
 
     }
 
@@ -80,8 +85,8 @@ public class PatchGenerator {
     }
 
 
-    private boolean isWithInBound(int x, int y, int dx, int dy) {
-        return x + dx >= 0 && y + dy >= 0 && x + dx < marsMap.getWidth() && y + dy < marsMap.getHeight();
+    private boolean isWithInBound(int x, int y) {
+        return x >= 0 && y >= 0 && x < marsMap.getWidth() && y < marsMap.getHeight();
 
     }
 
