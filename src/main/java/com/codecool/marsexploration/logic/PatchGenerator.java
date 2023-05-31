@@ -36,8 +36,12 @@ public class PatchGenerator {
     }
 
     public Coordinate pickFirstPosition() {
-        int randomX = random.nextInt(marsMap.getWidth());
-        int randomY = random.nextInt(marsMap.getHeight());
+        return generateRandomCoordinate(marsMap.getWidth(), marsMap.getHeight());
+    }
+
+    private Coordinate generateRandomCoordinate(int mapWidth, int mapHeight) {
+        int randomX = random.nextInt(mapWidth);
+        int randomY = random.nextInt(mapHeight);
         return new Coordinate(randomX, randomY);
     }
 
