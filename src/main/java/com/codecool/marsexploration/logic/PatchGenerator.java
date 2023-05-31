@@ -24,14 +24,14 @@ public class PatchGenerator {
     }
 
     public void generatePatch() {
-        putElementOnMap(pickFirstPosition());
-        potentialPositions = potentialNextPositions(pickFirstPosition());
+        Coordinate firstPosition = pickFirstPosition();
+        putElementOnMap(firstPosition);
+        potentialPositions.addAll(potentialNextPositions(firstPosition));
         for (int i = 1; i < numberOfTerrainElements; i++) {
-            if (!potentialPositions.isEmpty()) {
-                Coordinate actualPositionToAdd = randomCoordinate(potentialPositions);
-                putElementOnMap(actualPositionToAdd);
-                potentialPositions.remove(actualPositionToAdd);
-            }
+            Coordinate actualPositionToAdd = randomCoordinate(potentialPositions);
+            putElementOnMap(actualPositionToAdd);
+            potentialPositions.remove(actualPositionToAdd);
+            potentialPositions.addAll(potentialNextPositions(actualPositionToAdd));
         }
     }
 
@@ -75,7 +75,8 @@ public class PatchGenerator {
     }
 
     public Coordinate randomCoordinate(List<Coordinate> potentialNextPositions) {
-        return potentialNextPositions.get(random.nextInt(potentialNextPositions.size()));
+        int randomIndex = random.nextInt(potentialNextPositions.size());
+        return potentialNextPositions.get(randomIndex);
     }
 
 
