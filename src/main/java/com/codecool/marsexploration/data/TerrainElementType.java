@@ -2,7 +2,7 @@ package com.codecool.marsexploration.data;
 
 public enum TerrainElementType {
 
-        EMPTY("."),
+        EMPTY(" "),
 
         MOUNTAIN("^"),
         PIT("#"),

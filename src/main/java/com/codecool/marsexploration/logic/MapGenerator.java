@@ -5,6 +5,8 @@ import com.codecool.marsexploration.data.TerrainElementType;
 import com.codecool.marsexploration.logic.terrainGenerators.PatchGenerator;
 import com.codecool.marsexploration.logic.terrainGenerators.PointGenerator;
 
+import java.util.Random;
+
 public class MapGenerator {
     private MarsMap marsMap;
     private PatchGenerator patchGenerator;
@@ -15,21 +17,21 @@ public class MapGenerator {
     }
 
     public void generateMap(int numberOfMountainRegions, int numberOfMountains, int numberOfPitRegions, int numberOfPits, int numberOfMinerals, int numberOfWaters) {
-
+        Random random = new Random();
         for (int i = 0; i < numberOfMountainRegions; i++) {
-            patchGenerator = new PatchGenerator(TerrainElementType.MOUNTAIN, numberOfMountains, marsMap);
+            patchGenerator = new PatchGenerator(marsMap, TerrainElementType.MOUNTAIN, random, numberOfMountains);
             patchGenerator.generate();
         }
 
         for (int i = 0; i < numberOfPitRegions; i++) {
-            patchGenerator = new PatchGenerator(TerrainElementType.PIT, numberOfPits, marsMap);
+            patchGenerator = new PatchGenerator(marsMap,TerrainElementType.PIT, random, numberOfPits);
             patchGenerator.generate();
         }
 
-            pointGenerator = new PointGenerator(marsMap, TerrainElementType.MINERAL, TerrainElementType.MOUNTAIN, numberOfMinerals);
+            pointGenerator = new PointGenerator(marsMap, TerrainElementType.MINERAL, random, numberOfMinerals, TerrainElementType.MOUNTAIN);
             pointGenerator.generate();
 
-            pointGenerator = new PointGenerator(marsMap, TerrainElementType.WATER, TerrainElementType.PIT, numberOfWaters);
+            pointGenerator = new PointGenerator(marsMap, TerrainElementType.WATER, random, numberOfWaters, TerrainElementType.PIT);
             pointGenerator.generate();
 
     }

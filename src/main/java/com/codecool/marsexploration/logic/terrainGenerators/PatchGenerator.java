@@ -4,17 +4,14 @@ import com.codecool.marsexploration.data.Coordinate;
 import com.codecool.marsexploration.data.MarsMap;
 import com.codecool.marsexploration.data.TerrainElementType;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class PatchGenerator extends TerrainGenerator {
     private int numberOfTerrainElements;
 
-    public PatchGenerator(TerrainElementType terrainElementType, int numberOfTerrainElements, MarsMap marsMap) {
-        super(marsMap, terrainElementType);
+    public PatchGenerator(MarsMap marsMap, TerrainElementType terrainElementType, Random random, int numberOfTerrainElements) {
+        super(marsMap, terrainElementType, random);
         this.numberOfTerrainElements = numberOfTerrainElements;
-        this.potentialPositions = new ArrayList<>();
-        this.random = new Random();
     }
 
     @Override
@@ -23,7 +20,7 @@ public class PatchGenerator extends TerrainGenerator {
         putElementOnMap(firstPosition);
         potentialPositions(firstPosition);
         for (int i = 1; i < numberOfTerrainElements; i++) {
-            Coordinate actualPositionToAdd = randomCoordinateFromList();
+            Coordinate actualPositionToAdd = randomCoordinateFromPotentialPosition();
             putElementOnMap(actualPositionToAdd);
             potentialPositions.remove(actualPositionToAdd);
             potentialPositions(actualPositionToAdd);
