@@ -1,53 +1,33 @@
 package com.codecool.marsexploration.ui;
 
-import java.util.Scanner;
+import com.codecool.marsexploration.io.MapFileWriter;
+import com.codecool.marsexploration.logic.MapGenerator;
+
+import java.util.Arrays;
 
 public class MarsMapUI {
 
-    private final Scanner scanner = new Scanner(System.in);
+    public void start() {
+        UserInput scanner = new UserInput();
+        String fileName = scanner.askFileName();
+        int mapWidth = scanner.askMapWidth();
+        int mapHeight = scanner.askMapHeight();
+        int numberOfMountainRegions = scanner.askNumberOfMountainRegions();
+        int numberOfMountains = scanner.askNumberOfMountains();
+        int numberOfPitRegions = scanner.askNumberOfPitRegions();
+        int numberOfPits = scanner.askNumberOfPits();
+        int numberOfMineralPoints = scanner.askNumberOfMineralPoints();
+        int numberOfWaterPoints = scanner.askNumberOfWaterPoints();
 
-    public String askFileName() {
-        System.out.print("Enter the file name: ");
-        return scanner.nextLine();
-    }
-    public int askMapWidth() {
-        System.out.print("Enter the width of the map: ");
-        return scanner.nextInt();
-    }
+        MapGenerator mapGenerator = new MapGenerator(fileName, mapWidth, mapHeight);
+        mapGenerator.generateMap(numberOfMountainRegions, numberOfMountains, numberOfPitRegions, numberOfPits, numberOfMineralPoints, numberOfWaterPoints);
 
-    public int askMapHeight() {
-        System.out.print("Enter the height of the map: ");
-        return scanner.nextInt();
-    }
+        System.out.println(Arrays.deepToString(mapGenerator.getMarsMap().getTerrainElements()));
 
-    public int askNumberOfMountainRegions() {
-        System.out.print("Enter the number of mountain regions: ");
-        return scanner.nextInt();
-    }
+        MapFileWriter.saveMapToFile(mapGenerator.getMarsMap(), fileName);
 
-    public int askNumberOfMountains() {
-        System.out.print("Enter the number of mountains: ");
-        return scanner.nextInt();
+
     }
 
-    public int askNumberOfPitRegions() {
-        System.out.print("Enter the number of pit regions: ");
-        return scanner.nextInt();
-    }
-
-    public int askNumberOfPits() {
-        System.out.print("Enter the number of pits: ");
-        return scanner.nextInt();
-    }
-
-    public int askNumberOfMineralPoints() {
-        System.out.print("Enter the number of mineral points: ");
-        return scanner.nextInt();
-    }
-
-    public int askNumberOfWaterPoints() {
-        System.out.print("Enter the number of water points: ");
-        return scanner.nextInt();
-    }
 
 }
