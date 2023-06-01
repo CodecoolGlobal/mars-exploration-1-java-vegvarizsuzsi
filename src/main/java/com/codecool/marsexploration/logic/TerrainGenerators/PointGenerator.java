@@ -2,6 +2,7 @@ package com.codecool.marsexploration.logic.TerrainGenerators;
 
 import com.codecool.marsexploration.data.Coordinate;
 import com.codecool.marsexploration.data.MarsMap;
+import com.codecool.marsexploration.data.TerrainElement;
 import com.codecool.marsexploration.data.TerrainElementType;
 
 import java.util.ArrayList;
@@ -12,6 +13,7 @@ public class PointGenerator {
     private MarsMap marsMap;
     private int numberOfResources;
     private TerrainElementType terrainElementType;
+    private TerrainElementType sourceType;
     private Random random;
 
     List<Coordinate> potentialPositions;
@@ -20,6 +22,7 @@ public class PointGenerator {
         this.marsMap = marsMap;
         this.numberOfResources = numberOfResources;
         this.terrainElementType = terrainElementType;
+        this.sourceType = sourceType;
         this.potentialPositions = new ArrayList<>();
         this.random = new Random();
     }
@@ -28,7 +31,9 @@ public class PointGenerator {
         //TODO befejezni
         List<Coordinate> sourcePositions = getSourcePositions();
         for (int i = 1; i < numberOfResources; i++) {
-            randomCoordinateFromList(sourcePositions);
+            Coordinate actual = randomCoordinateFromList(potentialPositions);
+            putElementOnMap(actual);
+            potentialPositions.remove(actual);
         }
     }
 
@@ -36,7 +41,8 @@ public class PointGenerator {
         List<Coordinate> sourcePositions = new ArrayList<>();
         for (int x = 0; x < marsMap.getWidth(); x++) {
             for (int y = 0; y < marsMap.getHeight(); y++) {
-                if (marsMap.getTerrainElements()[x][y].getType() == terrainElementType) {
+                if (marsMap.getTerrainElements()[x][y].getType() == sourceType) {
+                    potentialPositions(new Coordinate(x, y));
                     sourcePositions.add(new Coordinate(x, y));
                 }
             }
