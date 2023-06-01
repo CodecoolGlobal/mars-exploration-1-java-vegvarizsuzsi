@@ -2,8 +2,8 @@ package com.codecool.marsexploration.logic;
 
 import com.codecool.marsexploration.data.MarsMap;
 import com.codecool.marsexploration.data.TerrainElementType;
-import com.codecool.marsexploration.logic.TerrainGenerators.PatchGenerator;
-import com.codecool.marsexploration.logic.TerrainGenerators.PointGenerator;
+import com.codecool.marsexploration.logic.terrainGenerators.PatchGenerator;
+import com.codecool.marsexploration.logic.terrainGenerators.PointGenerator;
 
 public class MapGenerator {
     private MarsMap marsMap;
@@ -18,26 +18,22 @@ public class MapGenerator {
 
         for (int i = 0; i < numberOfMountainRegions; i++) {
             patchGenerator = new PatchGenerator(TerrainElementType.MOUNTAIN, numberOfMountains, marsMap);
-            patchGenerator.generatePatch();
+            patchGenerator.generate();
         }
-
 
         for (int i = 0; i < numberOfPitRegions; i++) {
             patchGenerator = new PatchGenerator(TerrainElementType.PIT, numberOfPits, marsMap);
-            patchGenerator.generatePatch();
+            patchGenerator.generate();
         }
 
             pointGenerator = new PointGenerator(marsMap, TerrainElementType.MINERAL, TerrainElementType.MOUNTAIN, numberOfMinerals);
-            pointGenerator.generatePoints();
+            pointGenerator.generate();
 
             pointGenerator = new PointGenerator(marsMap, TerrainElementType.WATER, TerrainElementType.PIT, numberOfWaters);
-            pointGenerator.generatePoints();
-
+            pointGenerator.generate();
 
     }
-
     public MarsMap getMarsMap() {
         return marsMap;
     }
-
 }
