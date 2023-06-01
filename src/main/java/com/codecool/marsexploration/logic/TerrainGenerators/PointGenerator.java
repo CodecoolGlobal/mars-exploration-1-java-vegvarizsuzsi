@@ -12,6 +12,7 @@ public class PointGenerator {
     private MarsMap marsMap;
     private int numberOfResources;
     private TerrainElementType terrainElementType;
+    private TerrainElementType sourceType;
     private Random random;
 
     List<Coordinate> potentialPositions;
@@ -20,28 +21,30 @@ public class PointGenerator {
         this.marsMap = marsMap;
         this.numberOfResources = numberOfResources;
         this.terrainElementType = terrainElementType;
+        this.sourceType = sourceType;
         this.potentialPositions = new ArrayList<>();
         this.random = new Random();
     }
 
     public void generatePoints(){
-        //TODO befejezni
-        List<Coordinate> sourcePositions = getSourcePositions();
-        for (int i = 1; i < numberOfResources; i++) {
-            randomCoordinateFromList(sourcePositions);
+        getPotentialPositions();
+        for (int i = 0; i < numberOfResources; i++) {
+            Coordinate actual = randomCoordinateFromList(potentialPositions);
+            putElementOnMap(actual);
+            potentialPositions.remove(actual);
         }
     }
 
-    private List<Coordinate> getSourcePositions() {
-        List<Coordinate> sourcePositions = new ArrayList<>();
+    private void getPotentialPositions() {
         for (int x = 0; x < marsMap.getWidth(); x++) {
             for (int y = 0; y < marsMap.getHeight(); y++) {
-                if (marsMap.getTerrainElements()[x][y].getType() == terrainElementType) {
-                    sourcePositions.add(new Coordinate(x, y));
+                if (marsMap.getTerrainElements()[x][y].getType() == sourceType) {
+                    potentialPositions(new Coordinate(x, y));
+
                 }
             }
         }
-        return sourcePositions;
+
     }
 
     public void putElementOnMap(Coordinate coordinate) {

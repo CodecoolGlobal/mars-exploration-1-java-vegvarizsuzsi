@@ -7,7 +7,7 @@ public enum TerrainElementType {
         MOUNTAIN("^"),
         PIT("#"),
         WATER("~"),
-        MINERAL("#");
+        MINERAL("*");
 
         private final String symbol;
 
