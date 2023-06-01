@@ -15,18 +15,25 @@ public class MapGenerator {
     }
 
     public void generateMap(int numberOfMountainRegions, int numberOfMountains, int numberOfPitRegions, int numberOfPits, int numberOfMinerals, int numberOfWaters) {
-        //TODO
+
         for (int i = 0; i < numberOfMountainRegions; i++) {
             patchGenerator = new PatchGenerator(TerrainElementType.MOUNTAIN, numberOfMountains, marsMap);
             patchGenerator.generatePatch();
         }
 
-        pointGenerator = new PointGenerator(marsMap, TerrainElementType.MINERAL, TerrainElementType.MOUNTAIN, numberOfMinerals);
 
-        patchGenerator = new PatchGenerator(TerrainElementType.PIT, numberOfPits, marsMap);
-        patchGenerator.generatePatch();
+        for (int i = 0; i < numberOfPitRegions; i++) {
+            patchGenerator = new PatchGenerator(TerrainElementType.PIT, numberOfPits, marsMap);
+            patchGenerator.generatePatch();
+        }
 
-        pointGenerator = new PointGenerator(marsMap, TerrainElementType.WATER, TerrainElementType.PIT, numberOfMinerals);
+            pointGenerator = new PointGenerator(marsMap, TerrainElementType.MINERAL, TerrainElementType.MOUNTAIN, numberOfMinerals);
+            pointGenerator.generatePoints();
+
+            pointGenerator = new PointGenerator(marsMap, TerrainElementType.WATER, TerrainElementType.PIT, numberOfWaters);
+            pointGenerator.generatePoints();
+
+
     }
 
     public MarsMap getMarsMap() {

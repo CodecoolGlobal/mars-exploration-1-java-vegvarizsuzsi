@@ -28,7 +28,7 @@ public class PatchGenerator {
         putElementOnMap(firstPosition);
         potentialNextPositions(firstPosition);
         for (int i = 1; i < numberOfTerrainElements; i++) {
-            Coordinate actualPositionToAdd = randomCoordinateFromList(potentialPositions);
+            Coordinate actualPositionToAdd = randomCoordinateFromList();
             putElementOnMap(actualPositionToAdd);
             potentialPositions.remove(actualPositionToAdd);
             potentialNextPositions(actualPositionToAdd);
@@ -73,9 +73,9 @@ public class PatchGenerator {
         return new Coordinate(randomX, randomY);
     }
 
-    public Coordinate randomCoordinateFromList(List<Coordinate> potentialNextPositions) {
-        int randomIndex = random.nextInt(potentialNextPositions.size());
-        return potentialNextPositions.get(randomIndex);
+    public Coordinate randomCoordinateFromList() {
+        int randomIndex = random.nextInt(potentialPositions.size());
+        return potentialPositions.get(randomIndex);
     }
 
 

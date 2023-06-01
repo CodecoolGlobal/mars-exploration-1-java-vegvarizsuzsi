@@ -29,7 +29,7 @@ public class PointGenerator {
     public void generatePoints(){
         getPotentialPositions();
         for (int i = 0; i < numberOfResources; i++) {
-            Coordinate actual = randomCoordinateFromList(potentialPositions);
+            Coordinate actual = randomCoordinateFromList();
             putElementOnMap(actual);
             potentialPositions.remove(actual);
         }
@@ -44,7 +44,6 @@ public class PointGenerator {
                 }
             }
         }
-
     }
 
     public void putElementOnMap(Coordinate coordinate) {
@@ -72,9 +71,9 @@ public class PointGenerator {
         return new Coordinate(randomX, randomY);
     }
 
-    public Coordinate randomCoordinateFromList(List<Coordinate> potentialNextPositions) {
-        int randomIndex = random.nextInt(potentialNextPositions.size());
-        return potentialNextPositions.get(randomIndex);
+    public Coordinate randomCoordinateFromList() {
+        int randomIndex = random.nextInt(potentialPositions.size());
+        return potentialPositions.get(randomIndex);
     }
 
 }
