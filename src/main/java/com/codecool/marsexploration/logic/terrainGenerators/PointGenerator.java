@@ -10,24 +10,23 @@ public class PointGenerator extends TerrainGenerator {
     private int numberOfResources;
     private TerrainElementType sourceType;
 
-    public PointGenerator(MarsMap marsMap, TerrainElementType terrainElementType, TerrainElementType sourceType, int numberOfResources) {
-        super(marsMap, terrainElementType);
+    public PointGenerator(MarsMap marsMap, TerrainElementType terrainElementType, Random random, int numberOfResources, TerrainElementType sourceType) {
+        super(marsMap, terrainElementType, random);
         this.numberOfResources = numberOfResources;
         this.sourceType = sourceType;
-        this.random = new Random();
     }
 
     @Override
     public void generate() {
-        getPotentialPositions();
+        fillPotentialPositions();
         for (int i = 0; i < numberOfResources; i++) {
-            Coordinate actual = randomCoordinateFromList();
+            Coordinate actual = randomCoordinateFromPotentialPosition();
             putElementOnMap(actual);
             potentialPositions.remove(actual);
         }
     }
 
-    private void getPotentialPositions() {
+    private void fillPotentialPositions() {
         for (int x = 0; x < marsMap.getWidth(); x++) {
             for (int y = 0; y < marsMap.getHeight(); y++) {
                 if (marsMap.getTerrainElements()[x][y].getType() == sourceType) {

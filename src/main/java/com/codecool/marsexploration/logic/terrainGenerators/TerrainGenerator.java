@@ -15,11 +15,11 @@ public abstract class TerrainGenerator {
     protected List<Coordinate> potentialPositions;
     protected Random random;
 
-    public TerrainGenerator(MarsMap marsMap, TerrainElementType terrainElementType) {
+    public TerrainGenerator(MarsMap marsMap, TerrainElementType terrainElementType, Random random) {
         this.marsMap = marsMap;
         this.terrainElementType = terrainElementType;
         this.potentialPositions = new ArrayList<>();
-        this.random = new Random();
+        this.random = random;
     }
 
     public abstract void generate();
@@ -43,7 +43,7 @@ public abstract class TerrainGenerator {
         }
     }
 
-    public Coordinate randomCoordinateFromList() {
+    public Coordinate randomCoordinateFromPotentialPosition() {
         int randomIndex = random.nextInt(potentialPositions.size());
         return potentialPositions.get(randomIndex);
     }
