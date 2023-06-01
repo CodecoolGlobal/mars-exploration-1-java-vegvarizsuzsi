@@ -2,7 +2,6 @@ package com.codecool.marsexploration.logic.TerrainGenerators;
 
 import com.codecool.marsexploration.data.Coordinate;
 import com.codecool.marsexploration.data.MarsMap;
-import com.codecool.marsexploration.data.TerrainElement;
 import com.codecool.marsexploration.data.TerrainElementType;
 
 import java.util.ArrayList;
@@ -28,26 +27,24 @@ public class PointGenerator {
     }
 
     public void generatePoints(){
-        //TODO befejezni
-        List<Coordinate> sourcePositions = getSourcePositions();
-        for (int i = 1; i < numberOfResources; i++) {
+        getPotentialPositions();
+        for (int i = 0; i < numberOfResources; i++) {
             Coordinate actual = randomCoordinateFromList(potentialPositions);
             putElementOnMap(actual);
             potentialPositions.remove(actual);
         }
     }
 
-    private List<Coordinate> getSourcePositions() {
-        List<Coordinate> sourcePositions = new ArrayList<>();
+    private void getPotentialPositions() {
         for (int x = 0; x < marsMap.getWidth(); x++) {
             for (int y = 0; y < marsMap.getHeight(); y++) {
                 if (marsMap.getTerrainElements()[x][y].getType() == sourceType) {
                     potentialPositions(new Coordinate(x, y));
-                    sourcePositions.add(new Coordinate(x, y));
+
                 }
             }
         }
-        return sourcePositions;
+
     }
 
     public void putElementOnMap(Coordinate coordinate) {
