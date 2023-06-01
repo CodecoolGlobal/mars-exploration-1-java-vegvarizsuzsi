@@ -1,6 +1,7 @@
 package com.codecool.marsexploration.logic;
 
 import com.codecool.marsexploration.data.Coordinate;
+import com.codecool.marsexploration.logic.TerrainGenerators.PatchGenerator;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -19,7 +20,7 @@ class PatchGeneratorTest {
         potentialNextPositions.add(new Coordinate(3, 4));
         potentialNextPositions.add(new Coordinate(5, 6));
 
-        Coordinate result = patchGenerator.randomCoordinate(potentialNextPositions);
+        Coordinate result = patchGenerator.randomCoordinateFromList(potentialNextPositions);
         System.out.println(result);
         Assertions.assertNotNull(result);
         Assertions.assertTrue(potentialNextPositions.contains(result));

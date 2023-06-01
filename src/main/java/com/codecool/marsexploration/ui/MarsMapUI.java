@@ -6,7 +6,6 @@ public class MarsMapUI {
 
     private final Scanner scanner = new Scanner(System.in);
 
-    // nem biztos, hogy kell majd használni, lehet inkább előre megadott vagy random számok lesznek?
     public String askFileName() {
         System.out.print("Enter the file name: ");
         return scanner.nextLine();
