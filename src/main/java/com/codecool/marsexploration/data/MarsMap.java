@@ -26,7 +26,6 @@ public class MarsMap {
         this.height = height;
         terrainElements = new TerrainElement[width][height];
         initializeEmptyMap();
-
     }
 
     private void initializeEmptyMap() {
