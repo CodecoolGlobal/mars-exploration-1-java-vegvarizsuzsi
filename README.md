@@ -55,16 +55,17 @@ The project is structured to adhere to SOLID principles and other design princip
 <!-- INTRODUCTION -->
 ## Introduction
 
-The colonization of Mars is an ambitious endeavor, and to avoid wasting valuable resources, extensive simulation exercises are required here on Earth. The first task at hand is to create an application that can generate randomized maps of Mars, which will be used to calibrate the Mars rovers' software.
+The colonization of Mars is an ambitious endeavor, and to avoid wasting valuable resources, extensive simulation exercises are required here on Earth.
+The first task at hand is to create an application that can generate randomized maps of Mars, which will be used to calibrate the Mars rovers' software.
 
 In this initial phase, the application is tasked with generating four types of objects on the Martian map:
+`Mountains (^):` Patch-like terrain elements covering a 2D continuous area.  
+`Pits (#):` Patch-like terrain elements covering a 2D continuous area.   
+`Minerals (*):` Point-like resources.  
+`Pockets of Water (~):` Point-like resources.
 
-Mountains (^): Patch-like terrain elements covering a 2D continuous area.
-Pits (#): Patch-like terrain elements covering a 2D continuous area.
-Minerals (*): Point-like resources.
-Pockets of Water (~): Point-like resources.
-These maps will be generated based on input requirements defined in a configuration object. The configuration object will specify the file name for saving the results and the width of the square map. It will also contain parameters for:
-
+These maps will be generated based on input requirements defined in a configuration object.
+The configuration object will specify the file name for saving the results and the width of the square map. It will also contain parameters for:
 The areas covered by different terrain elements (e.g., the required areas for mountains and pits).
 The placement of mineral resources near mountain regions.
 The placement of pockets of water near pits.
@@ -110,8 +111,9 @@ Don't forget to give the project a star! Thanks again!
 <!-- CONTACT -->
 ## Contact
 
-Zsuzsi Végvári - [@Zsuzsi Végvári_LinkedIn](https://www.linkedin.com/in/zsuzsiv%C3%A9gv%C3%A1ri/)
-
+Zsuzsi Végvári - [@Zsuzsi Végvári_LinkedIn](https://www.linkedin.com/in/zsuzsiv%C3%A9gv%C3%A1ri/)  
+Noémi Varga - [@Noémi Varga_LinkedIn](https://www.linkedin.com/in/noemi-varga-ba021060?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3BVaz10imJQ9aW7%2FCOiHT8wg%3D%3D)  
+Tímea Tamasi - [@Tímea Tamasi_LinkedIn](https://www.linkedin.com/in/timea-tamasi?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B54R4iAY9QGay7%2Bw%2B8F89yA%3D%3D)  
 
 Project Link: [https://github.com/CodecoolGlobal/mars-exploration-1-java-vegvarizsuzsi](https://github.com/CodecoolGlobal/mars-exploration-1-java-vegvarizsuzsi)
 
