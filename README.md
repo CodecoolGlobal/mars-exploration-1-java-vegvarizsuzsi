@@ -5,7 +5,7 @@
 <br />
 <div align="center">
 
-![Mars](https://github.com/CodecoolGlobal/mars-exploration-1-java-vegvarizsuzsi/blob/development/src/main/resources/mars.png)
+![Mars](https://github.com/CodecoolGlobal/mars-exploration-1-java-vegvarizsuzsi/blob/development/src/main/resources/mars2.jpg)
 
 <h3 align="center">MARS MAP GENERATOR</h3>
 </div>
