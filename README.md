@@ -81,6 +81,7 @@ To define the requirements for the resulting map, you'll use a configuration obj
 
 `file_name:` The name of the file to save the generated map.  
 `map_width:` The width of the square map.  
+
 Additionally, the configuration object should specify the most important parameters for terrain elements and resources, such as:  
 `mountain_regions:` An array indicating the number of mountain regions and their respective areas.  
 `pit_regions:` An array indicating the number of pit regions and their respective areas.  
