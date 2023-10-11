@@ -5,7 +5,7 @@
 <br />
 <div align="center">
 
-![Mars](https://github.com/CodecoolGlobal/mars-exploration-1-java-vegvarizsuzsi/blob/development/src/main/resources/mars2.jpg)
+![Mars](https://github.com/CodecoolGlobal/mars-exploration-1-java-vegvarizsuzsi/blob/development/src/main/resources/mars-mission.jpg)
 
 <h3 align="center">MARS MAP GENERATOR</h3>
 </div>
@@ -58,7 +58,7 @@ The project is structured to adhere to SOLID principles and other design princip
 The colonization of Mars is an ambitious endeavor, and to avoid wasting valuable resources, extensive simulation exercises are required here on Earth.
 The first task at hand is to create an application that can generate randomized maps of Mars, which will be used to calibrate the Mars rovers' software.
 
-In this initial phase, the application is tasked with generating four types of objects on the Martian map:
+In this initial phase, the application is tasked with generating four types of objects on the Martian map:  
 `Mountains (^):` Patch-like terrain elements covering a 2D continuous area.  
 `Pits (#):` Patch-like terrain elements covering a 2D continuous area.   
 `Minerals (*):` Point-like resources.  
