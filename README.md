@@ -5,7 +5,7 @@
 <br />
 <div align="center">
 
-![Weather App Screenshot](https://github.com/CodecoolGlobal/weather-app-javascript-vegvarizsuzsi/blob/development/public/images/weather_app.png)
+![Mars](https://github.com/CodecoolGlobal/mars-exploration-1-java-vegvarizsuzsi/blob/development/src/main/resources/mars.png)
 
 <h3 align="center">MARS MAP GENERATOR</h3>
 </div>
