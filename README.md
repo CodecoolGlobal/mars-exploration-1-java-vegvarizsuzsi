@@ -90,6 +90,8 @@ Additionally, the configuration object should specify the most important paramet
 
 Ensure that the configuration object reflects the specific requirements of your simulation.
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 <!-- CONTRIBUTING -->
 ## Contributing
