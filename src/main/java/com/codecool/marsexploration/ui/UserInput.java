@@ -1,8 +1,10 @@
 package com.codecool.marsexploration.ui;
 
+import java.util.Scanner;
+
 public class UserInput {
 
-    private final java.util.Scanner scanner = new java.util.Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
     public String askFileName() {
         System.out.print("Enter the file name: ");
